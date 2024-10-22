@@ -21,8 +21,7 @@ class Robot(health: Double, power: Int, var battery: Double) : Human(health, pow
                     battery -= 30
                     power += Random.nextInt(1, 2) * 5
                     println("The robot raised its` power limits")
-                }
-                else{
+                } else {
                     println("Don`t have enough battery")
                     battery += 10
                 }
@@ -60,6 +59,9 @@ class Robot(health: Double, power: Int, var battery: Double) : Human(health, pow
                 battery += (damage * Random.nextDouble(0.01, 0.1)).toBigDecimal().setScale(0, RoundingMode.UP)
                     .toDouble()
             }
+        } else {
+            val dn = damage - battery
+            health -= dn.toBigDecimal().setScale(1, RoundingMode.UP).toDouble()
         }
     }
 
